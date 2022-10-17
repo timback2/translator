@@ -1,4 +1,5 @@
 black
+git+https://github.com/openai/whisper.git
 gTTS
 langdetect
 playsound

@@ -1,7 +1,7 @@
-import time
 from gtts import gTTS
-import argparse
 from langdetect import detect, DetectorFactory
+import argparse
+import time
 
 
 def generate_audio_file(text, language, filename):
@@ -45,7 +45,10 @@ if __name__ == "__main__":
     language = detect_language(text)
     if language != 'unknown':
     # Generate the audio files
+        print("Detected language: " + language)
         generate_audio_file(text, language, args.output)
+    else:
+        print("Language not detected")
 
     # Print the time taken
     print(f"Time taken: {time.time() - start_time:.2f} seconds")

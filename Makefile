@@ -1,10 +1,14 @@
-all: create_env
+all: create_temp_folder generate_audio_file translate_audio clean
+	
+create_temp_folder:
+	- $(eval TMP := $(shell mktemp -d))
 
-create_env:
-	conda create --name py310translator python=3.10
+generate_audio_file:
+	python src/generate_audio_file.py --input input/russian.txt --output $(TMP)/output.mp3
 
-enable_env: 
-	conda activate py310translator
+translate_audio:
+# TODO: Handle audio generation failure
+	whisper  -o output/ --task translate --model large $(TMP)/output.mp3
 
-install_dependencies:
-	pip install -r requirements.txt
+clean: 
+	rm -rf $(TMP)
