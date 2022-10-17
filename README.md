@@ -11,3 +11,9 @@ conda activate py310translator
 
 pip install -r requirements.txt
 ```
+
+
+## Run
+
+```bash
+make SOURCE_FILE=input/russian.txt
