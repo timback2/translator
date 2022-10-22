@@ -1,4 +1,5 @@
 SOURCE_FILE ?= "input/russian.txt"
+language ?= "russian"
 
 all: create_temp_folder generate_audio_file translate_audio clean
 	
@@ -14,3 +15,6 @@ translate_audio:
 
 clean: 
 	rm -rf $(TMP)
+
+process_files:
+	echo "Called process_files with $(language) language"
