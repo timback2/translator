@@ -9,13 +9,14 @@ create_temp_folder:
 generate_audio_file:
 	python src/generate_audio_file.py --input $(SOURCE_FILE) --output $(TMP)/audio.mp3
 
+translate_audio: SHELL:=/bin/bash
 translate_audio:
-# TODO: Handle audio generation failure
 	if [ -a $(TMP)/audio.mp3 ] ; \
 	then \
 		whisper  -o output/ --task translate --model large $(TMP)/audio.mp3; \
 	fi;
 
+rename_output_file: SHELL:=/bin/bash
 rename_output_file:
 	if [ -a output/audio.mp3.txt ] ; \
 	then \
