@@ -131,4 +131,5 @@ dmypy.json
 
 input/*
 output/*
+translated/*
 **/.DS_Store

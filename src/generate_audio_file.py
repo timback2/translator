@@ -43,7 +43,9 @@ if __name__ == "__main__":
 
     text = get_file_contents(args.input)
     language = detect_language(text)
-    if language != 'unknown':
+    if language == "en":
+        print("Detected language is English. Skipping audio generation.")
+    elif language != 'unknown':
     # Generate the audio files
         print("Detected language: " + language)
         generate_audio_file(text, language, args.output)
